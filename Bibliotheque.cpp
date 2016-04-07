@@ -15,6 +15,8 @@ Description:
 #include "Professeur.h"
 #include "Etudiant.h"
 #include "EtudiantBaccalaureat.h"
+#include "ExceptionEchecEmprunt.h"
+#include "ExceptionEchecRetour.h"
 
 #include <list>
 
