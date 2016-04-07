@@ -1,15 +1,12 @@
 /****************************************************************************
-* Fichier: ExceptionEchecRetour.h
+* Fichier: ExceptionEchecRetour.cpp
 * Auteur(s): Charles-Olivier Favreau et Stéphanie Leclerc
 * Date de creation: 7 avril 2016
 * Date de modification: avril 2016
-* Description: Description de la classe ExceptionEchecRetour
+* Description: Fonctions reliés à la classe ExceptionEchecRetour
 ****************************************************************************/
-#include <string>
 
-class ExceptionEchecRetour : public std::runtime_error {
+#include "ExceptionEchecRetour.h"
 
-public: 
-	ExceptionEchecRetour(string message = "");
-};
+ExceptionEchecRetour::ExceptionEchecRetour(string message) :runtime_error(message) {};
 
