@@ -25,7 +25,9 @@ SOURCES += main.cpp\
     Livre.cpp \
     LivreNumerique.cpp \
     ObjetEmpruntable.cpp \
-    Professeur.cpp
+    Professeur.cpp \
+    ExceptionEchecEmprunt.cpp \
+    ExceptionEchecRetour.cpp
 
 HEADERS  += mainwindow.h \
     Abonne.h \
@@ -45,7 +47,9 @@ HEADERS  += mainwindow.h \
     ObjetNumerique.h \
     Professeur.h \
     RechercheObjetEmpruntable.h \
-    TrieParTitre.h
+    TrieParTitre.h \
+    ExceptionEchecEmprunt.h \
+    ExceptionEchecRetour.h
 
 FORMS    += mainwindow.ui
 

@@ -158,6 +158,7 @@ void MainWindow::ajouterEmprunt()
 	/////////////////////////////////////////////////////////////
 
 	// Recupere le pointeur de l'abonne selectionne
+
     QListWidgetItem* itemAb = obtenirAbonneSelectionne(); // exception possible ici 
     Abonne* ab = itemAb->data(Qt::UserRole).value<Abonne*>();
 
