@@ -146,6 +146,20 @@ void Bibliotheque::emprunter(const string& matricule, const string& cote, unsign
 	// appropriée avec le message approprié le cas échéant.
 	///////////////////////////////////////////////////////////////
 
+	if (ab == nullptr) {
+		ExceptionEchecEmprunt descriptionAb("Abonné non trouvé \n");
+		throw descriptionAb;
+	}
+
+	if (obj == nullptr) {
+		ExceptionEchecEmprunt descriptionObj("Objet empruntable non trouvé \n");
+		throw descriptionObj;
+	}
+
+	if (obj->obtenirNbDisponibles() == 0) {
+		ExceptionEchecEmprunt descriptionNbDispos("Aucun exemplaire disponible \n");
+		throw descriptionNbDispos;
+	}
 
     // vérifier si l'abonné à déjà emprunter l'objet ou s'il a atteint la limite d'emprunter
     unsigned int count = 0;
@@ -159,6 +173,22 @@ void Bibliotheque::emprunter(const string& matricule, const string& cote, unsign
 	// et qu'il n'a pas atteint sa limite d'emprunts. Lancer 
 	// l'exception appropriée avec le message approprié le cas échéant.
 	///////////////////////////////////////////////////////////////
+
+	if (ab->obtenirAge() < obj->obtenirAgeMinimal()) {
+		ExceptionEchecEmprunt descriptionAge("L'abonné n'a pas l'âge minimal requis \n");
+		throw descriptionAge;
+
+	}
+
+	if (estTrouve) {
+		ExceptionEchecEmprunt descriptionBool("L'abonné a déjà emprunté cet objet \n");
+		throw descriptionBool;
+	}
+
+	if (count >= ab->obtenirLimiteEmprunt()) {
+		ExceptionEchecEmprunt descriptionLimite("L'abonné a atteint sa limite d'emprunts \n");
+		throw descriptionLimite;
+	}
 
     //On ajoute l'emprunt
     Emprunt* nouvelEmprunt = new Emprunt(ab->obtenirMatricule(), obj, date);
@@ -179,6 +209,11 @@ void Bibliotheque::retourner(const string& matricule, const string& cote)
 	//                    !!!!! A FAIRE !!!!!
 	// Lancer l'exception appropriée si l'emprunt n'est pas trouvé.
 	///////////////////////////////////////////////////////////////
+
+	if (!Gestionnaire<T>::trouverElement(paire)) {
+		ExceptionEchecRetour descriptionRetour("L’emprunt correspondant au matricule et à la cote n’est pas trouvé. ");
+		throw descriptionRetour;
+	}
 
 
     ObjetEmpruntable* obj = em->obtenirObjetEmpruntable();
