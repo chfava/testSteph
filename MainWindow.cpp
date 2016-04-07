@@ -76,6 +76,11 @@ void MainWindow::setUI()
 	// (avec la même apparence que dans l'exemple)
 	///////////////////////////////////////////////////
 
+    QPushButton* ajouterUnEmprunt = new QPushButton(this);
+    ajouterUnEmprunt->setText("Ajouter Emprunt");
+
+    QPushButton* retirerUnEmprunt = new QPushButton(this);
+    retirerUnEmprunt->setText("Retirer");
 
     // Layout principal de la fenetre
     QHBoxLayout* mainLayout = new QHBoxLayout;
@@ -102,6 +107,9 @@ void MainWindow::setConnections()
 	// Ajout des connexions manquantes
 	//////////////////////////////////////
 
+    connect(AjouterUnEmprunt,SIGNAL(itemClicked()),this, SLOT(ajouterEmprunt()));
+    connect(RetournerUnEmprunt,SIGNAL(itemClicked()),this, SLOT(retirerEmprunt()));
+    connect(this,SIGNAL(empruntAjoute(QListWidgetItem*)),this, SLOT(afficherEmpruntsAbonne(QListWidgetItem*)));
 }
 
 // Fonction qui remplit la liste d'abonnes a partir de ceux de la bibliotheque

@@ -1,9 +1,9 @@
 /*
 Fichier: Gestionnaire.h
 Auteur(s): Mohamed Amine Kibiche
-Date de creation: 25 février 2016
-Date de modification: 25 février 2016
-Description: Classe template permet de gérer l'Ajout, le retrait  la recherche des objets
+Date de creation: 25 fï¿½vrier 2016
+Date de modification: 25 fï¿½vrier 2016
+Description: Classe template permet de gï¿½rer l'Ajout, le retrait  la recherche des objets
 */
 #ifndef GESTIONNAIRE_H
 #define GESTIONNAIRE_H
