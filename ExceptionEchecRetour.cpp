@@ -7,6 +7,9 @@
 ****************************************************************************/
 
 #include "ExceptionEchecRetour.h"
+#include <string>
+
+using namespace std;
 /****************************************************************************
 * Fonction: ExceptionEchecRetour::ExceptionEchecRetour
 * Description: Constructeur par paramètres

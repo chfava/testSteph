@@ -16,7 +16,10 @@
 #include <iostream>
 #include <list>
 
+#include "ExceptionEchecEmprunt.h"
+#include "ExceptionEchecRetour.h"
 #include "DialogEmprunter.h"
+#include "Bibliotheque.h"
 
 
 
@@ -187,8 +190,20 @@ void MainWindow::retirerEmprunt()
 	// Intercepter l'exception lancée par la méthode retourner()
 	// et afficher une boîte de message appropriée (voir exemple)
 	///////////////////////////////////////////////////////////////
+	try {
+		biblio_->retourner("0", "0"); // genere une erreur car cet emprunt n'existe pas
+	}
+	catch (ExceptionEchecRetour& e) {
+		QString qstr = QString::fromStdString("Emprunt non trouvé");
 
-    biblio_->retourner("0","0"); // genere une erreur car cet emprunt n'existe pas
+		QMessageBox* messageErreur = new QMessageBox(this);
+		messageErreur->setIcon(QMessageBox::Critical);
+		messageErreur->setWindowTitle(qstr);
+		messageErreur->setText(e.what());
+		messageErreur->exec();
+	}
+
+   
 
 }
 

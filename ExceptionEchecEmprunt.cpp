@@ -9,13 +9,15 @@
 #include "ExceptionEchecEmprunt.h"
 #include <string>
 
+using namespace std;
+
 /****************************************************************************
 * Fonction: ExceptionEchecEmprunt::ExceptionEchecEmprunt
 * Description: Constructeur par paramètres
 * Paramètres: string message : un message d'erreur
 * Retour: aucun
 ****************************************************************************/
-ExceptionEchecEmprunt::ExceptionEchecEmprunt(string message) {
+ExceptionEchecEmprunt::ExceptionEchecEmprunt(string message) : runtime_error(message){
 	compteur_++;
 }
 
@@ -25,7 +27,7 @@ ExceptionEchecEmprunt::ExceptionEchecEmprunt(string message) {
 * Paramètres: aucun
 * Retour: (int) la valeur de compteur_
 ****************************************************************************/
-static int ExceptionEchecEmprunt::obtenirValeurCompteur() const {
+static int ExceptionEchecEmprunt::obtenirValeurCompteur() {
 	return compteur_;
 }
 

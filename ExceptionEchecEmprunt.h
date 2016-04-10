@@ -11,7 +11,7 @@ class ExceptionEchecEmprunt :public std::runtime_error {
 
 public:
 	ExceptionEchecEmprunt(string message);
-	static int obtenirValeurCompteur() const;
+	static int obtenirValeurCompteur();
 
 private: 
 	static int compteur_;

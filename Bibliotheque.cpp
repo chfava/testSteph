@@ -137,9 +137,22 @@ void Bibliotheque::emprunter(const string& matricule, const string& cote, unsign
 	//On doit vérifier que tous les vecteurs sont parcourus
 	Abonne* ab = trouverAbonne(matricule);
 
+	if (ab == nullptr) {
+		ExceptionEchecEmprunt echecEmprunt("Abonné non trouvé ");
+		throw echecEmprunt;
+	}
+
 	ObjetEmpruntable* obj = trouverObjetEmpruntable(cote);
 
+	if (obj == nullptr) {
+		ExceptionEchecEmprunt echecEmprunt("Objet empruntable non trouvé ");
+		throw echecEmprunt;
+	}
 
+	if (obj->obtenirNbDisponibles() == 0) {
+		ExceptionEchecEmprunt echecEmprunt("Aucun exemplaire disponible ");
+		throw echecEmprunt;
+	}
     // On s'assure qu'il est possible d'emprunter l'objet
 
 	///////////////////////////////////////////////////////////////
@@ -147,21 +160,6 @@ void Bibliotheque::emprunter(const string& matricule, const string& cote, unsign
 	// Vérifier les conditions d'emprunts et lancer l'exception
 	// appropriée avec le message approprié le cas échéant.
 	///////////////////////////////////////////////////////////////
-
-	if (ab == nullptr) {
-		ExceptionEchecEmprunt descriptionAb("Abonné non trouvé \n");
-		throw descriptionAb;
-	}
-
-	if (obj == nullptr) {
-		ExceptionEchecEmprunt descriptionObj("Objet empruntable non trouvé \n");
-		throw descriptionObj;
-	}
-
-	if (obj->obtenirNbDisponibles() == 0) {
-		ExceptionEchecEmprunt descriptionNbDispos("Aucun exemplaire disponible \n");
-		throw descriptionNbDispos;
-	}
 
     // vérifier si l'abonné à déjà emprunter l'objet ou s'il a atteint la limite d'emprunter
     unsigned int count = 0;
@@ -177,19 +175,19 @@ void Bibliotheque::emprunter(const string& matricule, const string& cote, unsign
 	///////////////////////////////////////////////////////////////
 
 	if (ab->obtenirAge() < obj->obtenirAgeMinimal()) {
-		ExceptionEchecEmprunt descriptionAge("L'abonné n'a pas l'âge minimal requis \n");
-		throw descriptionAge;
+		ExceptionEchecEmprunt echecEmprunt("L'abonné n'a pas l'âge minimal requis ");
+		throw echecEmprunt;
 
 	}
 
 	if (estTrouve) {
-		ExceptionEchecEmprunt descriptionBool("L'abonné a déjà emprunté cet objet \n");
-		throw descriptionBool;
+		ExceptionEchecEmprunt echecEmprunt("L'abonné a déjà emprunté cet objet ");
+		throw echecEmprunt;
 	}
 
 	if (count >= ab->obtenirLimiteEmprunt()) {
-		ExceptionEchecEmprunt descriptionLimite("L'abonné a atteint sa limite d'emprunts \n");
-		throw descriptionLimite;
+		ExceptionEchecEmprunt echecEmprunt("L'abonné a atteint sa limite d'emprunts ");
+		throw echecEmprunt;
 	}
 
     //On ajoute l'emprunt
@@ -211,10 +209,14 @@ void Bibliotheque::retourner(const string& matricule, const string& cote)
 	//                    !!!!! A FAIRE !!!!!
 	// Lancer l'exception appropriée si l'emprunt n'est pas trouvé.
 	///////////////////////////////////////////////////////////////
+	if (em == nullptr) {
+		ExceptionEchecRetour echecRetour("Emprunt non trouvé ");
+		throw echecRetour;
+	}
 
 	if (!Gestionnaire<T>::trouverElement(paire)) {
-		ExceptionEchecRetour descriptionRetour("L’emprunt correspondant au matricule et à la cote n’est pas trouvé. ");
-		throw descriptionRetour;
+		ExceptionEchecRetour echecRetour("L’emprunt correspondant au matricule et à la cote n’est pas trouvé. ");
+		throw echecRetour;
 	}
 
 
