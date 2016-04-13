@@ -79,11 +79,11 @@ void MainWindow::setUI()
 	// (avec la même apparence que dans l'exemple)
 	///////////////////////////////////////////////////
 
-    QPushButton* ajouterUnEmprunt = new QPushButton(this);
-    ajouterUnEmprunt->setText("Ajouter Emprunt");
+    boutonAjoutEmprunt_ = new QPushButton(this);
+    boutonAjoutEmprunt_->setText("Ajouter Emprunt");
 
-    QPushButton* retirerUnEmprunt = new QPushButton(this);
-    retirerUnEmprunt->setText("Retirer");
+    boutonRetourner_ = new QPushButton(this);
+    boutonRetourner_->setText("Retirer");
 
     // Layout principal de la fenetre
     QHBoxLayout* mainLayout = new QHBoxLayout;
@@ -110,8 +110,8 @@ void MainWindow::setConnections()
 	// Ajout des connexions manquantes
 	//////////////////////////////////////
 
-    connect(AjouterUnEmprunt,SIGNAL(itemClicked()),this, SLOT(ajouterEmprunt()));
-    connect(RetournerUnEmprunt,SIGNAL(itemClicked()),this, SLOT(retirerEmprunt()));
+    connect(boutonAjoutEmprunt_,SIGNAL(itemClicked()),this, SLOT(ajouterEmprunt()));
+    connect(boutonRetourner_,SIGNAL(itemClicked()),this, SLOT(retirerEmprunt()));
     connect(this,SIGNAL(empruntAjoute(QListWidgetItem*)),this, SLOT(afficherEmpruntsAbonne(QListWidgetItem*)));
 }
 
@@ -162,7 +162,7 @@ void MainWindow::ajouterEmprunt()
 
 	// Recupere le pointeur de l'abonne selectionne
 
-
+    try{
     QListWidgetItem* itemAb = obtenirAbonneSelectionne(); // exception possible ici 
     Abonne* ab = itemAb->data(Qt::UserRole).value<Abonne*>();
 
@@ -176,9 +176,20 @@ void MainWindow::ajouterEmprunt()
 		// pointeur sur l'objet selectionne dans la liste:
         ObjetEmpruntable* obj = dialog->obtenirObjetSelectionne();
 		// tentative d'emprunt:
+        try{
         biblio_->emprunter(ab->obtenirMatricule(),obj->obtenirCote(),160530); // exception possible ici
-    }
+        } catch (ExceptionEchecEmprunt& e){
+            QMessageBox message;
+            QString title = "Échec d'emprunt (" + QString::number(e.obtenirValeurCompteur());
+            title = title + "e erreur";
+            message.critical(0, title, e.what());
+        }
+        }
     delete dialog;
+    }catch (std::length_error& e){
+        QMessageBox message;
+        message.critical(0, "Oups !  ", e.what());
+    }
 }
 
 // Fonction de retour d'objet emprunte

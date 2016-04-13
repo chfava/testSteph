@@ -27,7 +27,7 @@ ExceptionEchecEmprunt::ExceptionEchecEmprunt(string message) : runtime_error(mes
 * Paramètres: aucun
 * Retour: (int) la valeur de compteur_
 ****************************************************************************/
-static int ExceptionEchecEmprunt::obtenirValeurCompteur() {
+int ExceptionEchecEmprunt::obtenirValeurCompteur() {
 	return compteur_;
 }
 

@@ -10,6 +10,6 @@
 class ExceptionEchecRetour : public std::runtime_error {
 
 public: 
-	ExceptionEchecRetour(string message = "");
+    ExceptionEchecRetour(std::string message = "");
 };
 
