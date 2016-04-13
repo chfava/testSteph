@@ -73,30 +73,28 @@ void MainWindow::setUI()
     tabEmpruntsLayout->addWidget(tabEmprunts_);
 
 
-	///////////////////////////////////////////////////
-	//            !!!!! A FAIRE !!!!!
-	// Ajout des boutons Retourner et Ajouter emprunt
-	// (avec la même apparence que dans l'exemple)
-	///////////////////////////////////////////////////
+    ///////////////////////////////////////////////////
+    //            !!!!! A FAIRE !!!!!
+    // Ajout des boutons Retourner et Ajouter emprunt
+    // (avec la même apparence que dans l'exemple)
+    ///////////////////////////////////////////////////
 
-    boutonAjoutEmprunt_ = new QPushButton(this);
-    boutonAjoutEmprunt_->setText("Ajouter Emprunt");
+    boutonAjoutEmprunt_ = new QPushButton("Ajouter Emprunt",this);
+    boutonRetourner_ = new QPushButton("Retirer",this);
 
-    boutonRetourner_ = new QPushButton(this);
-    boutonRetourner_->setText("Retirer");
-    /*
+
     QHBoxLayout* layoutButton = new QHBoxLayout;
     layoutButton->addWidget(boutonAjoutEmprunt_);
     layoutButton->addWidget(boutonRetourner_);
     QVBoxLayout* layoutButtonEmprunt = new QVBoxLayout;
     layoutButtonEmprunt->addLayout(tabEmpruntsLayout);
     layoutButtonEmprunt->addLayout(layoutButton);
-    */
+
 
     // Layout principal de la fenetre
     QHBoxLayout* mainLayout = new QHBoxLayout;
     mainLayout->addLayout(listeAbLayout);
-    mainLayout->addLayout(tabEmpruntsLayout);
+    mainLayout->addLayout(layoutButtonEmprunt);
     // Crée un nouveau Widget comprenant le layout principal
     QWidget* widget = new QWidget;
     widget->setLayout(mainLayout);
