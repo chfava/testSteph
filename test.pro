@@ -26,7 +26,6 @@ SOURCES += main.cpp\
     LivreNumerique.cpp \
     ObjetEmpruntable.cpp \
     Professeur.cpp \
-    ExceptionEchecEmprunt.cpp \
     ExceptionEchecRetour.cpp
 
 HEADERS  += mainwindow.h \

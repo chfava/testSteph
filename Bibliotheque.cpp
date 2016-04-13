@@ -148,11 +148,8 @@ void Bibliotheque::emprunter(const string& matricule, const string& cote, unsign
 		ExceptionEchecEmprunt echecEmprunt("Objet empruntable non trouvé ");
 		throw echecEmprunt;
 	}
+    else{
 
-	if (obj->obtenirNbDisponibles() == 0) {
-		ExceptionEchecEmprunt echecEmprunt("Aucun exemplaire disponible ");
-		throw echecEmprunt;
-	}
     // On s'assure qu'il est possible d'emprunter l'objet
 
 	///////////////////////////////////////////////////////////////
@@ -173,6 +170,10 @@ void Bibliotheque::emprunter(const string& matricule, const string& cote, unsign
 	// et qu'il n'a pas atteint sa limite d'emprunts. Lancer 
 	// l'exception appropriée avec le message approprié le cas échéant.
 	///////////////////////////////////////////////////////////////
+    if (obj->obtenirNbDisponibles() == 0) {
+        ExceptionEchecEmprunt echecEmprunt("Aucun exemplaire disponible ");
+        throw echecEmprunt;
+    }
 
 	if (ab->obtenirAge() < obj->obtenirAgeMinimal()) {
 		ExceptionEchecEmprunt echecEmprunt("L'abonné n'a pas l'âge minimal requis ");
@@ -191,9 +192,12 @@ void Bibliotheque::emprunter(const string& matricule, const string& cote, unsign
 	}
 
     //On ajoute l'emprunt
+    else{
     Emprunt* nouvelEmprunt = new Emprunt(ab->obtenirMatricule(), obj, date);
     gestEmprunts_.ajouterElement(nouvelEmprunt);
     obj->modifierNbDisponibles(obj->obtenirNbDisponibles() - 1);
+    }
+    }
 }
 
 void Bibliotheque::retourner(const string& matricule, const string& cote)
@@ -207,23 +211,19 @@ void Bibliotheque::retourner(const string& matricule, const string& cote)
     
 	///////////////////////////////////////////////////////////////
 	//                    !!!!! A FAIRE !!!!!
-	// Lancer l'exception appropriée si l'emprunt n'est pas trouvé.
+    // Lancer l'exception appropriée si l'emprunt n'est pas trouvé.
 	///////////////////////////////////////////////////////////////
 	if (em == nullptr) {
 		ExceptionEchecRetour echecRetour("Emprunt non trouvé ");
 		throw echecRetour;
 	}
 
-	if (!Gestionnaire<T>::trouverElement(paire)) {
-		ExceptionEchecRetour echecRetour("L’emprunt correspondant au matricule et à la cote n’est pas trouvé. ");
-		throw echecRetour;
-	}
-
-
+    else{
     ObjetEmpruntable* obj = em->obtenirObjetEmpruntable();
     gestEmprunts_.retirerContenu(trouve);
     delete em;
     obj->modifierNbDisponibles(obj->obtenirNbDisponibles() + 1);
+    }
 }
 
 // Afficher l'information de l'abonné correspondant au matricule
