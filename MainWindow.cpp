@@ -84,6 +84,14 @@ void MainWindow::setUI()
 
     boutonRetourner_ = new QPushButton(this);
     boutonRetourner_->setText("Retirer");
+    /*
+    QHBoxLayout* layoutButton = new QHBoxLayout;
+    layoutButton->addWidget(boutonAjoutEmprunt_);
+    layoutButton->addWidget(boutonRetourner_);
+    QVBoxLayout* layoutButtonEmprunt = new QVBoxLayout;
+    layoutButtonEmprunt->addLayout(tabEmpruntsLayout);
+    layoutButtonEmprunt->addLayout(layoutButton);
+    */
 
     // Layout principal de la fenetre
     QHBoxLayout* mainLayout = new QHBoxLayout;

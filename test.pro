@@ -50,7 +50,8 @@ HEADERS  += mainwindow.h \
     ExceptionEchecEmprunt.h \
     ExceptionEchecRetour.h
 
-FORMS    += mainwindow.ui
+FORMS    += \
+    mainwindow.ui
 
 DISTFILES += \
     test.pro.user
