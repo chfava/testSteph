@@ -26,7 +26,7 @@
 using namespace std;
 
 Q_DECLARE_METATYPE(Abonne*)
-
+int ExceptionEchecEmprunt::compteur_ = 0;
 
 MainWindow::MainWindow(Bibliotheque * biblio, QWidget *parent) :
     QMainWindow(parent)
