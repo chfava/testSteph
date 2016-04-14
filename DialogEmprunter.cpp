@@ -1,3 +1,10 @@
+/****************************************************************************
+* Fichier: DialogEmprunter.cpp
+* Auteur(s): Charles-Olivier Favreau et Stéphanie Leclerc
+* Date de creation: 7 avril 2016
+* Date de modification: 13 avril 2016
+* Description: Fonctions reliées à classe DialogEmprunter
+****************************************************************************/
 #include "DialogEmprunter.h"
 
 #include <QDialogButtonBox>

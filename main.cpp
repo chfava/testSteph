@@ -1,3 +1,10 @@
+/****************************************************************************
+* Fichier: main.cpp
+* Auteur(s): Charles-Olivier Favreau et Stéphanie Leclerc
+* Date de creation: 7 avril 2016
+* Date de modification: 13 avril 2016
+* Description: Fonction principale: main()
+****************************************************************************/
 #include "MainWindow.h"
 #include <QApplication>
 

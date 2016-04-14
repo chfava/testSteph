@@ -1,3 +1,10 @@
+/****************************************************************************
+* Fichier: MainWindow.cpp
+* Auteur(s): Charles-Olivier Favreau et Stéphanie Leclerc
+* Date de creation: 7 avril 2016
+* Date de modification: 13 avril 2016
+* Description: Fonctions reliées à classe MainWindow
+****************************************************************************/
 #include "MainWindow.h"
 #include "ui_mainwindow.h"
 
@@ -27,7 +34,13 @@ using namespace std;
 
 Q_DECLARE_METATYPE(Abonne*)
 int ExceptionEchecEmprunt::compteur_ = 0;
-
+/****************************************************************************
+* Fonction: MainWindow::MainWindow
+* Description: Constructeur par paramètres
+* Paramètres: - Bibliotheque biblio: un pointeur d'une bibliotheque (OUT)
+*             - QWidget parent: un pointeur d'un qwidget (OUT)
+* Retour: aucun
+****************************************************************************/
 MainWindow::MainWindow(Bibliotheque * biblio, QWidget *parent) :
     QMainWindow(parent)
 {
@@ -42,12 +55,22 @@ MainWindow::MainWindow(Bibliotheque * biblio, QWidget *parent) :
     // charge la liste d'abonnes dans l'interface
     chargerAbonnes();
 }
-
+/****************************************************************************
+* Fonction: MainWindow::~MainWindow
+* Description: Destructeur
+* Paramètres: aucun
+* Retour: aucun
+****************************************************************************/
 MainWindow::~MainWindow()
 {
 
 }
-
+/****************************************************************************
+* Fonction: MainWindow::setUI
+* Description: Créé les différents de l'interface
+* Paramètres: aucun
+* Retour: aucun
+****************************************************************************/
 void MainWindow::setUI()
 {
     // Widget et layout pour la liste d'abonnes
@@ -104,7 +127,12 @@ void MainWindow::setUI()
     // Titre de la fenêtre
     setWindowTitle("Gestion de bibliothèque");
 }
-
+/**************************************************************************************************
+* Fonction: MainWindow::setConnections
+* Description: Connecte les événements des éléments de l'interface aux méthodes private slots
+* Paramètres: aucun
+* Retour: aucun
+**************************************************************************************************/
 void MainWindow::setConnections()
 {
     connect(listeAbonnes_, SIGNAL(itemClicked(QListWidgetItem*)),
@@ -120,7 +148,12 @@ void MainWindow::setConnections()
     connect(boutonRetourner_,SIGNAL(itemClicked()),this, SLOT(retirerEmprunt()));
     connect(this,SIGNAL(empruntAjoute(QListWidgetItem*)),this, SLOT(afficherEmpruntsAbonne(QListWidgetItem*)));
 }
-
+/*******************************************************************************************************
+* Fonction: MainWindow::chargerAbonnes
+* Description:  Remplit l’objet QListWidget avec la liste de tous les abonnés de la bibliothèque
+* Paramètres: aucun
+* Retour: aucun
+******************************************************************************************************/
 // Fonction qui remplit la liste d'abonnes a partir de ceux de la bibliotheque
 void MainWindow::chargerAbonnes()
 {
@@ -132,7 +165,12 @@ void MainWindow::chargerAbonnes()
         item->setData(Qt::UserRole, QVariant::fromValue<Abonne*>(*it));
     }
 }
-
+/****************************************************************************************************************
+* Fonction: MainWindow::afficherEmpruntsAbonne
+* Description: Récupère le pointeur de l'abonné sélectionné dans la liste et les affiche dans la QTableView
+* Paramètres: - QListWidgetItem item: le pointeur de l'abonné sélectionné dans la liste
+* Retour: aucun
+****************************************************************************************************************/
 // Fonction qui recupere le pointeur de l'abonne selectionne dans la liste
 // et charge les emprunts de cet abonne pour les afficher dans le tableau
 void MainWindow::afficherEmpruntsAbonne(QListWidgetItem* item)
@@ -151,7 +189,12 @@ void MainWindow::afficherEmpruntsAbonne(QListWidgetItem* item)
         model_->appendRow(row);
     }
 }
-
+/******************************************************************************************************************************
+* Fonction: MainWindow::ajouterEmprunt
+* Description: Affiche dans une fenêtre dialogue la liste des objets empruntables et permet d’en sélectionner un à emprunter
+* Paramètres: aucun
+* Retour: aucun
+******************************************************************************************************************************/
 // Fonction pour l'ajout d'un emprunt a l'abonne selectionne
 void MainWindow::ajouterEmprunt()
 {
@@ -197,7 +240,12 @@ void MainWindow::ajouterEmprunt()
         message.critical(0, "Oups !  ", e.what());
     }
 }
-
+/****************************************************************************************************************
+* Fonction: MainWindow::retirerEmprunt
+* Description: La fonction tente de retourner un objet empruntable inexistant pour un abonné inexistant
+* Paramètres: aucun
+* Retour: aucun
+****************************************************************************************************************/
 // Fonction de retour d'objet emprunte
 void MainWindow::retirerEmprunt()
 {
@@ -223,7 +271,12 @@ void MainWindow::retirerEmprunt()
    
 
 }
-
+/****************************************************************************************************************
+* Fonction: MainWindow::obtenirAbonneSelectionne
+* Description: Retourne l’élément sélectionné dans la liste d’abonnés
+* Paramètres: aucun
+* Retour: (QListWidgetItem*) l'élément sélectionné dans la liste d'abonnés
+****************************************************************************************************************/
 // Fonction qui retourne l'item correspondant a l'abonne selectionne dans la liste
 QListWidgetItem* MainWindow::obtenirAbonneSelectionne()
 {

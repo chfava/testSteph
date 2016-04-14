@@ -1,10 +1,10 @@
-/*
-Fichier: RechercheObjetEmpruntable.h
-Auteur(s): Mohamed Amine Kibiche
-Date de creation: 25 février 2016
-Date de modification: 25 février 2016
-Description: Foncteur permet de chercher un str dans un ObjetEmpruntable
-*/
+/****************************************************************************
+* Fichier: RechercheObjetEmpruntable.h
+* Auteur(s): Charles-Olivier Favreau et Stéphanie Leclerc
+* Date de creation: 7 avril 2016
+* Date de modification: 13 avril 2016
+* Description: Description du foncteur RechercheObjetEmpruntable
+****************************************************************************/
 #ifndef RECHERCHEOBJETEMPRUNTABLE_H
 #define RECHERCHEOBJETEMPRUNTABLE_H
 

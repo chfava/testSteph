@@ -1,10 +1,10 @@
-/*
-Fichier: MemeElement.h
-Auteur(s): Mohamed Amine Kibiche
-Date de creation: 25 février 2016
-Date de modification: 25 février 2016
-Description: Foncteur permet de vérifier si l'élément existe déjèa
-*/
+/****************************************************************************
+* Fichier: MemeElement.h
+* Auteur(s): Charles-Olivier Favreau et Stéphanie Leclerc
+* Date de creation: 7 avril 2016
+* Date de modification: 13 avril 2016
+* Description: Description du foncteur MemeElement
+****************************************************************************/
 #ifndef MEMEELEMENT_H
 #define MEMEELEMENT_H
 

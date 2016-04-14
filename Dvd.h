@@ -1,3 +1,10 @@
+/****************************************************************************
+* Fichier: Dvd.h
+* Auteur(s): Charles-Olivier Favreau et Stéphanie Leclerc
+* Date de creation: 7 avril 2016
+* Date de modification: 13 avril 2016
+* Description: Description de la classe Dvd
+****************************************************************************/
 #ifndef DVD_H
 #define DVD_H
 #include "ObjetEmpruntable.h"

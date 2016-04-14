@@ -1,10 +1,10 @@
-/*
-Fichier: Empruntable.h
-Auteur(s):  Mohamed Amine Kibiche
-Date de creation: 25 février 2016
-Date de modification: 25 février 2016
-Description: Foncteur pour vérifier la possibilité d'emprunt
-*/
+/****************************************************************************
+* Fichier: Empruntable.h
+* Auteur(s): Charles-Olivier Favreau et Stéphanie Leclerc
+* Date de creation: 7 avril 2016
+* Date de modification: 13 avril 2016
+* Description: Fonctions liées au foncteur Empruntable
+****************************************************************************/
 #ifndef EMPRUNTABLE_H
 #define EMPRUNTABLE_H
 

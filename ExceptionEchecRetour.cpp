@@ -2,7 +2,7 @@
 * Fichier: ExceptionEchecRetour.cpp
 * Auteur(s): Charles-Olivier Favreau et Stéphanie Leclerc
 * Date de creation: 7 avril 2016
-* Date de modification: avril 2016
+* Date de modification: 13 avril 2016
 * Description: Fonction reliée à la classe ExceptionEchecRetour
 ****************************************************************************/
 
